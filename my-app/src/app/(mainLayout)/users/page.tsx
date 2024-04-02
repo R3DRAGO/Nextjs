@@ -1,14 +1,21 @@
 import {FC, PropsWithChildren} from "react";
+import {userService} from "@/services/userService";
+import Users from "@/app/(mainLayout)/users/components/Users";
+import type {Metadata} from "next";
 
+export const metadata: Metadata = {
+    title: "Users",
+};
 
 interface IProps extends PropsWithChildren {
 
 }
 
-const UsersPage: FC<IProps> = () => {
+const UsersPage: FC<IProps> = async () => {
+    let {data} = await userService.getAll();
     return (
         <div>
-            UsersPage
+            <Users users={data}/>
         </div>
     );
 };

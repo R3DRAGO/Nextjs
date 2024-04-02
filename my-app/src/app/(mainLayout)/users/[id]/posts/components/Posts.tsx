@@ -1,14 +1,15 @@
-import {PropsWithChildren} from "react";
+import {FC, PropsWithChildren} from "react";
 import {IPost} from "@/interfaces/postInterface";
+import {Post} from "@/app/(mainLayout)/users/[id]/posts/components/Post";
 
 interface IProps extends PropsWithChildren {
     posts: IPost[]
 }
 
-const Posts = () => {
+const Posts: FC<IProps> = ({posts}) => {
     return (
         <div>
-            Posts
+            {posts.map(post=><Post key={post.id} post={post}/>)}
         </div>
     );
 };
